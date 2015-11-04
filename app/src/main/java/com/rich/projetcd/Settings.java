@@ -16,11 +16,12 @@ public class Settings extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
 
         final Button trialB = (Button)findViewById(R.id.trialButton);
+        final TextView trialText = (TextView)findViewById(R.id.trialText);
 
         trialB.setOnClickListener(
                 new Button.OnClickListener(){
                     public void onClick(View v){
-                        trialB.setText(Trial.addition(2,3));
+                        trialText.setText(Trial.addition(2,3));
                     }
                 }
         );

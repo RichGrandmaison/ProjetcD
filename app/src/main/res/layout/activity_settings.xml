@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/settings"
-        android:id="@+id/textView2"
+        android:id="@+id/settingsTest"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp" />
@@ -20,20 +20,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
-        android:id="@+id/trial"
-        android:layout_centerVertical="true"
-        android:layout_alignRight="@+id/textView2"
-        android:layout_alignEnd="@+id/textView2" />
+        android:text="Change me!"
+        android:id="@+id/trialText"
+        android:layout_below="@+id/settingsTest"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="128dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Button"
         android:id="@+id/trialButton"
-        android:layout_below="@+id/trial"
-        android:layout_alignRight="@+id/trial"
-        android:layout_alignEnd="@+id/trial"
-        android:layout_marginTop="49dp"
-        android:focusable="true" />
+        android:layout_marginTop="64dp"
+        android:focusable="true"
+        android:layout_below="@+id/trialText"
+        android:layout_centerHorizontal="true"/>
 </RelativeLayout>

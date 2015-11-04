@@ -10,7 +10,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 
-public class Main extends AppCompatActivity {
+public class
+        Main extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
