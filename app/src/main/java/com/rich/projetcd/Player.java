@@ -32,4 +32,8 @@ public class Player {
     public void setPoints(int points) {
         this.points = points;
     }
+
+    public void drawCards(int draws) {
+
+        }
 }

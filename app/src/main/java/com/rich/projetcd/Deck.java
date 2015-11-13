@@ -17,10 +17,6 @@ public class Deck {
     public Deck() {
     }
 
-    public void shuffle() {
-        Collections.shuffle(this.cards);
-    }
-
     public void addCardtoDeck(Card card) {
         cards.add(card);
         card.addedToDeck();

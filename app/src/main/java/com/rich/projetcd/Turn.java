@@ -6,9 +6,9 @@ package com.rich.projetcd;
 public class Turn {
 
     Player player;
-    public int actions = 1;
-    public int buys = 1;
-    public int cash = 0;
+    private int actions = 1;
+    private int buys = 1;
+    private int cash = 0;
 
     public Turn(Player player) {
         this.player = player;
