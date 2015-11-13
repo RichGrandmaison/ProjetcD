@@ -1,4 +1,4 @@
-package com.rich.projetcd.cards.Treasures;
+package com.rich.projetcd.cards.treasures;
 
 import com.rich.projetcd.Turn;
 
@@ -8,7 +8,7 @@ import com.rich.projetcd.Turn;
 public class Gold extends Treasure {
 
     public Gold() {
-        super(3, "Silver", 0, "", Set.ALL);
+        super(3, "Gold", 6, "", Set.ALL, Type.TREASURE);
     }
 
     @Override

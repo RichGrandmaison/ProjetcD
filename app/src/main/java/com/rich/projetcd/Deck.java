@@ -1,5 +1,7 @@
 package com.rich.projetcd;
 
+import com.rich.projetcd.cards.Card;
+
 import java.util.ArrayList;
 import java.util.Collections;
 

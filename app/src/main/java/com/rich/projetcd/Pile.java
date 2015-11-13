@@ -1,5 +1,7 @@
 package com.rich.projetcd;
 
+import com.rich.projetcd.cards.Card;
+
 /**
  * Created by Rich on 2015-11-13.
  */
