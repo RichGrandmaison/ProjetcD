@@ -23,4 +23,5 @@ public class Discard {
         Collections.shuffle(this.discards);
 
     }
+
 }

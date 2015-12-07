@@ -7,8 +7,6 @@ import junit.framework.TestCase;
  */
 public class KingdomTest extends TestCase {
 
-    private static final String TAG = "KingdomTest";
-
     public Kingdom kd = new Kingdom();
     Player player1 = new Player();
     Player player2  = new Player();
@@ -20,10 +18,15 @@ public class KingdomTest extends TestCase {
 
         player1.setName("Player 1");
         player2.setName("Player 2");
+        player1.generateInitialDeck();
+        player2.generateInitialDeck();
+        player2.deck.shuffle();
 
         assertTrue(kd.getPlayers().size() == 2);
         assertTrue(kd.getPlayerAtIndex(0).equals(player1));
         assertTrue(kd.getPlayerAtIndex(1).getName().equals("Player 2"));
+        assertTrue(kd.getPlayerAtIndex(1).deck.cards.size() == 10);
+
     }
 
 

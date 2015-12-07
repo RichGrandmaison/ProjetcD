@@ -7,7 +7,7 @@ import android.util.Log;
  */
 public abstract class Card {
 
-    private static final String TAG = "KingdomTest";
+    private static final String TAG = "MYTEST";
 
     private String cardName;
     private String cardText;
@@ -62,11 +62,11 @@ public abstract class Card {
 
     public void addedToDeck() {
         System.out.println(cardName + " added to deck.");
-        Log.i(TAG, cardName + " added to deck.");
+        Log.d(TAG, cardName + " added to deck.");
     }
     public void addedToKingdom() {
         System.out.println(cardName + " added to kingdom.");
-        Log.i(TAG, cardName + " added to kingdom.");
+        Log.d(TAG, cardName + " added to kingdom.");
     }
 
     public enum Set {

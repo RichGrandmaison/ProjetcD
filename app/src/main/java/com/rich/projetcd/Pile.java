@@ -52,5 +52,6 @@ public class Pile<T> {
 
     public void addedToKingtom() {
         this.pileCard.addedToKingdom();
+
     }
 }
