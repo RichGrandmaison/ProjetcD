@@ -1,7 +1,8 @@
 package com.rich.projetcd;
 
+import android.util.Log;
+
 import com.rich.projetcd.cards.treasures.*;
-import com.rich.projetcd.cards.actions.*;
 import com.rich.projetcd.cards.victories.*;
 
 /**
@@ -9,21 +10,24 @@ import com.rich.projetcd.cards.victories.*;
  */
 public class Player {
 
+    private static final String TAG = "Player Logs";
+
     private String name;
     private int points = 0;
-    public Deck deck; //all your cards
+    public OwnedCards ownedCards; //all your cards
     Discard discardPile; //cards in the discard pile
     Played playedCards; //cards discarded this turn, but not yet in the Discard pile.
-    Playable deckCards; //cards from which you draw
+    Deck deck; //cards from which you draw
     Hand hand; //cards in your hand
 
 
     public Player() {
         
-        this.deck = new Deck();
+        this.ownedCards = new OwnedCards();
         this.discardPile = new Discard();
         this.playedCards = new Played();
-        this.deckCards = new Playable();
+        this.deck = new Deck();
+        this.hand = new Hand();
         
     }
 
@@ -43,16 +47,37 @@ public class Player {
         this.points = points;
     }
 
-    public void drawCards(int draws) {
-
-        }
-    
     public void generateInitialDeck() {
+
         for (int i = 0; i < 7; i++) {
-            deck.addCardtoDeck(new Copper());
+            Copper copper = new Copper();
+            deck.addCardToTopOfDeck(copper);
+            ownedCards.addCardtoOwnedCards(copper);
         }
         for (int i = 0; i < 3; i++) {
-            deck.addCardtoDeck(new Estate());
+            Estate estate = new Estate();
+            deck.addCardToTopOfDeck(estate);
+            ownedCards.addCardtoOwnedCards(estate);
+        }
+
+        deck.shuffle();
+    }
+
+
+    public void generateHand() {
+        hand.generateHand(this);
+    }
+
+    public void drawCards(int draws) {
+        for(int i = 0; i < draws; i++) {
+            if(!deck.isEmpty()) {
+                hand.addToHand(deck.drawTopCard());
+                Log.i(TAG, "Drew a card");
+            }
+            else {
+                deck.cards = discardPile.shuffleAndMakeDeck();
+                hand.addToHand(deck.drawTopCard());
+            }
         }
 
     }

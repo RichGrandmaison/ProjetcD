@@ -6,8 +6,6 @@ import com.rich.projetcd.cards.Card;
 
 import junit.framework.TestCase;
 
-import java.util.logging.Logger;
-
 /**
  * Created by rich on 06/12/15.
  */
@@ -19,27 +17,22 @@ public class KingdomTest extends TestCase {
 
     public void testAddingPlayers() {
 
-        //Add players to the Kingdom. Generate initial deck. Shuffle deck.
+        //Add players to the Kingdom. Generate initial ownedCards. Shuffle ownedCards.
 
         final String TAG = "TestAddingPlayers";
 
         kd.addPlayer(player1);
         kd.addPlayer(player2);
+        player1.generateInitialDeck();
+        player2.generateInitialDeck();
 
         player1.setName("Player 1");
         player2.setName("Player 2");
-        player1.generateInitialDeck();
-        player2.generateInitialDeck();
-        player2.deck.shuffle();
 
         assertTrue(kd.getPlayers().size() == 2);
         assertTrue(kd.getPlayerAtIndex(0).equals(player1));
         assertTrue(kd.getPlayerAtIndex(1).getName().equals("Player 2"));
-        assertTrue(kd.getPlayerAtIndex(1).deck.cards.size() == 10);
-
-        for(Card c : player2.deck.cards) {
-            System.out.println(c.getCardName());
-        }
+        assertTrue(kd.getPlayerAtIndex(1).ownedCards.cards.size() == 10);
 
     }
 
@@ -57,6 +50,21 @@ public class KingdomTest extends TestCase {
         assertTrue(kd.getPiles().size() == 6);
         assertTrue(kd.getPiles().get("Copper").getPileSize() == 60);
         assertTrue(kd.getPiles().get("Estate").getPileSize() == sizeOfVictoryPiles);
+
+    }
+
+    public void testDeckManipulations() {
+
+        final String TAG = "testDeckManipulations";
+
+        player1.generateInitialDeck();
+        player2.generateInitialDeck();
+
+        player1.drawCards(2);
+
+        assertEquals(player1.deck.cards.size(), 8);
+        assertEquals(player1.hand.size(), 2);
+
 
     }
 

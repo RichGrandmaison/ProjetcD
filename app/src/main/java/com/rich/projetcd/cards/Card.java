@@ -61,8 +61,8 @@ public abstract class Card {
 
 
     public void addedToDeck() {
-        System.out.println(cardName + " added to deck.");
-        Log.i(TAG, cardName + " added to deck.");
+        System.out.println(cardName + " added to ownedCards.");
+        Log.i(TAG, cardName + " added to ownedCards.");
     }
     public void addedToKingdom() {
         System.out.println(cardName + " added to kingdom.");

@@ -18,9 +18,17 @@ public class Discard {
         discards = new ArrayList<>();
     }
 
-    public void shuffle() {
+    public boolean isEmpty() {
+        return discards.isEmpty();
+    }
 
+    public ArrayList<Card> shuffleAndMakeDeck() {
+
+        ArrayList<Card> newDeck = new ArrayList<>();
         Collections.shuffle(this.discards);
+        newDeck.addAll(discards);
+        discards.clear();
+        return newDeck;
 
     }
 

@@ -1,5 +1,7 @@
 package com.rich.projetcd;
 
+import android.util.Log;
+
 import com.rich.projetcd.cards.Card;
 
 import java.util.ArrayList;
@@ -7,32 +9,37 @@ import java.util.Collections;
 
 /**
  * Created by Rich on 2015-11-13.
- * Represents all the cards in your control.
- *  Deck = Playable + Hand + Played + Discard + Mats
+ *
  */
 public class Deck {
 
-    public ArrayList<Card> cards = new ArrayList<>();
+    private static final String TAG = "++DECK:";
+
+    public ArrayList<Card> cards;
 
     public Deck() {
+        this.cards = new ArrayList<>();
     }
 
-    public void addCardtoDeck(Card card) {
-        cards.add(card);
-        card.addedToDeck();
+    public boolean isEmpty() {
+        return this.cards.isEmpty();
     }
 
-    public void removeCardFromDeck(Card card) {
-        cards.remove(card);
+    public void addCardToTopOfDeck(Card c) {
+        cards.add(c);
+        Log.i(TAG, "added " + c.getCardName() + " to top of deck.");
+    }
+
+    public Card drawTopCard() {
+        Card top = cards.get(cards.size() - 1);
+        cards.remove(top);
+        Log.i(TAG, "drew " + top.getCardName() + " from top of deck.");
+        return top;
     }
 
     public void shuffle() {
-
         Collections.shuffle(this.cards);
-
     }
 
-
-
-
 }
+
