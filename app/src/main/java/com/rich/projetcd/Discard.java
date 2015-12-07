@@ -10,7 +10,13 @@ import java.util.Collections;
  */
 public class Discard {
 
-    ArrayList<Card> discards = new ArrayList<>();
+    ArrayList<Card> discards;
+
+
+    public Discard() {
+
+        discards = new ArrayList<>();
+    }
 
     public void shuffle() {
 

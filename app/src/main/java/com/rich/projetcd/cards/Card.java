@@ -1,9 +1,13 @@
 package com.rich.projetcd.cards;
 
+import android.util.Log;
+
 /**
  * Created by Rich on 2015-11-13.
  */
 public abstract class Card {
+
+    private static final String TAG = "KingdomTest";
 
     private String cardName;
     private String cardText;
@@ -20,6 +24,7 @@ public abstract class Card {
         this.cardText = text;
         this.cardSet = set;
         this.cardType = type;
+        addedToKingdom();
     }
 
     public String getCardName() {
@@ -50,16 +55,19 @@ public abstract class Card {
         this.cardCost = cardCost;
     }
 
-    public void setCardSet(Set cardSet) {
-        this.cardSet = cardSet;
-    }
+    public void setCardSet(Set cardSet) { this.cardSet = cardSet;}
 
-    public void setCardType(Type cardType) {
-        this.cardType = cardType;
-    }
+    public void setCardType(Type cardType) { this.cardType = cardType;}
 
-    public abstract void addedToDeck();
-    public abstract void addedToKingdom();
+
+    public void addedToDeck() {
+        System.out.println(cardName + " added to deck.");
+        Log.i(TAG, cardName + " added to deck.");
+    }
+    public void addedToKingdom() {
+        System.out.println(cardName + " added to kingdom.");
+        Log.i(TAG, cardName + " added to kingdom.");
+    }
 
     public enum Set {
         ALL, BASE, SEASIDE, INTRIGUE, DARK_AGES, GUILDS, ALCHEMY, PROSPERITY, ADVENTURES, HINTERLANDS, CORNUCOPIA, PROMO
@@ -69,4 +77,5 @@ public abstract class Card {
         TREASURE, ACTION, VICTORY, CURSE, ACTION_ATTACK, ACTION_VICTORY, ACTION_REACTION, ACTION_DURATION, TREASURE_VICTORY, RUINS,
         TREASURE_REACTION
     }
+
 }

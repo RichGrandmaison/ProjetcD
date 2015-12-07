@@ -5,24 +5,24 @@ package com.rich.projetcd;
  */
 public class Player {
 
-    private String playerName;
+    private String name;
     private int points = 0;
     Deck deck; //all your cards
     Discard discardPile; //cards in the discard pile
-    Played played; //cards discarded this turn, but not yet in the Discard pile.
-    Playable playable; //cards from which you draw
+    Played playedCards; //cards discarded this turn, but not yet in the Discard pile.
+    Playable deckCards; //cards from which you draw
     Hand hand; //cards in your hand
 
 
     public Player() {
     }
 
-    private void setPlayerName(String name) {
-        this.playerName = name;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    private String getPlayerName() {
-        return this.playerName;
+    public String getName() {
+        return this.name;
     }
 
     public int getPoints() {

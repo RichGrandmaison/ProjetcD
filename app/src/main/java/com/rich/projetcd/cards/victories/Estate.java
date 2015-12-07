@@ -7,7 +7,7 @@ import com.rich.projetcd.Player;
  */
 public class Estate extends Victory {
 
-    public Estate(String name, int cost, String text, Set set, Type type) {
+    public Estate() {
         super("Estate", 2, "", Set.ALL, Type.VICTORY);
     }
     @Override

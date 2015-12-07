@@ -5,20 +5,22 @@ import com.rich.projetcd.cards.Card;
 /**
  * Created by Rich on 2015-11-13.
  */
-public class Pile {
+public class Pile<T> {
+
 
     private Card pileCard;
     private int pileSize;
+    private int pileIndex;
 
-    Pile(Card card) {
-        this.pileCard = card;
-        int pileSize = 10;
+    Pile() {
     }
 
-    Pile(Card card, int size) {
-        this.pileCard = card;
-        this.pileSize = size;
+    public Pile(Card pileCard, int pileSize) {
+        this.pileCard = pileCard;
+        this.pileSize = pileSize;
     }
+
+    private void setPileCard(Card card) { this.pileCard = card; }
 
     public int getPileSize() {
         return this.pileSize;
@@ -36,4 +38,19 @@ public class Pile {
         this.pileSize += 1;
     }
 
+    public int getIndex() {return pileIndex;}
+
+    public void setIndex(int index) { this.pileIndex = index;}
+
+    public Card getPileCard() {
+        return pileCard;
+    }
+
+    public String getPileCardName() {
+        return pileCard.getCardName();
+    }
+
+    public void addedToKingtom() {
+        this.pileCard.addedToKingdom();
+    }
 }

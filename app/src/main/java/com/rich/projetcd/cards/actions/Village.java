@@ -8,7 +8,7 @@ import com.rich.projetcd.Turn;
 public class Village extends Action {
 
     public Village() {
-        super("Village", 3, "+1 Card; +2 Action", Set.BASE, Type.ACTION);
+        super("Village", 3, "+1 Card\r\n+2 Action", Set.BASE, Type.ACTION);
     }
     @Override
     public void playAction(Turn turn) {
