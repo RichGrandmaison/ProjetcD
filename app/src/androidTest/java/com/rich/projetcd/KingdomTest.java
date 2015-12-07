@@ -1,6 +1,12 @@
 package com.rich.projetcd;
 
+import android.util.Log;
+
+import com.rich.projetcd.cards.Card;
+
 import junit.framework.TestCase;
+
+import java.util.logging.Logger;
 
 /**
  * Created by rich on 06/12/15.
@@ -12,6 +18,10 @@ public class KingdomTest extends TestCase {
     Player player2  = new Player();
 
     public void testAddingPlayers() {
+
+        //Add players to the Kingdom. Generate initial deck. Shuffle deck.
+
+        final String TAG = "TestAddingPlayers";
 
         kd.addPlayer(player1);
         kd.addPlayer(player2);
@@ -27,10 +37,16 @@ public class KingdomTest extends TestCase {
         assertTrue(kd.getPlayerAtIndex(1).getName().equals("Player 2"));
         assertTrue(kd.getPlayerAtIndex(1).deck.cards.size() == 10);
 
+        for(Card c : player2.deck.cards) {
+            System.out.println(c.getCardName());
+        }
+
     }
 
 
     public void testAddingFixedKingdomCards() {
+
+        final String TAG = "TestAddingFixedKingdomCards";
 
         kd.addPlayer(player1);
         kd.addPlayer(player2);
