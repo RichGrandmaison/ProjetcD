@@ -1,7 +1,5 @@
 package com.rich.projetcd;
 
-import android.util.Log;
-
 import com.rich.projetcd.cards.treasures.*;
 import com.rich.projetcd.cards.victories.*;
 
@@ -69,16 +67,7 @@ public class Player {
     }
 
     public void drawCards(int draws) {
-        for(int i = 0; i < draws; i++) {
-            if(!deck.isEmpty()) {
-                hand.addToHand(deck.drawTopCard());
-                Log.i(TAG, "Drew a card");
-            }
-            else {
-                deck.cards = discardPile.shuffleAndMakeDeck();
-                hand.addToHand(deck.drawTopCard());
-            }
-        }
-
+        hand.drawCards(draws, this);
     }
+
 }

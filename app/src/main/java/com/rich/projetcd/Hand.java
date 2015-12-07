@@ -20,10 +20,6 @@ public class Hand {
         cards = new ArrayList<>();
     }
 
-    public void drawCardsFromDeck(int x) {
-
-    }
-
     public int size() {
         return cards.size();
     }
@@ -39,10 +35,19 @@ public class Hand {
 
     public void generateHand(Player player) {
         while(cards.size() < 5) {
-            if(!player.deck.isEmpty()) {
-
-            }
+               player.drawCards(1);
         }
     }
 
+    public void drawCards(int draws, Player player) {
+        for(int i = 0; i < draws; i++) {
+            if(!player.deck.isEmpty()) {
+                addToHand(player.deck.drawTopCard());
+            }
+            else {
+                player.deck.cards = player.discardPile.shuffleAndMakeDeck();
+                addToHand(player.deck.drawTopCard());
+            }
+        }
+    }
 }

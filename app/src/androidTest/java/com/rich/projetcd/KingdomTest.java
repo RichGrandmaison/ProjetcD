@@ -59,11 +59,10 @@ public class KingdomTest extends TestCase {
 
         player1.generateInitialDeck();
         player2.generateInitialDeck();
+        player1.generateHand();
 
-        player1.drawCards(2);
-
-        assertEquals(player1.deck.cards.size(), 8);
-        assertEquals(player1.hand.size(), 2);
+        assertEquals(player1.deck.cards.size(),5);
+        assertEquals(player1.hand.size(), 5);
 
 
     }
