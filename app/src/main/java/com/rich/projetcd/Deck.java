@@ -3,6 +3,8 @@ package com.rich.projetcd;
 import android.util.Log;
 
 import com.rich.projetcd.cards.Card;
+import com.rich.projetcd.cards.treasures.Copper;
+import com.rich.projetcd.cards.victories.Estate;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -41,5 +43,20 @@ public class Deck {
         Collections.shuffle(this.cards);
     }
 
+    public void generateInitialDeck(Player player) {
+
+        for (int i = 0; i < 7; i++) {
+            Copper copper = new Copper();
+            addCardToTopOfDeck(copper);
+            player.ownedCards.addCardtoOwnedCards(copper);
+        }
+        for (int i = 0; i < 3; i++) {
+            Estate estate = new Estate();
+            addCardToTopOfDeck(estate);
+            player.ownedCards.addCardtoOwnedCards(estate);
+        }
+
+        shuffle();
+    }
 }
 

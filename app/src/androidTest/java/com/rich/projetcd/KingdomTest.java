@@ -1,9 +1,5 @@
 package com.rich.projetcd;
 
-import android.util.Log;
-
-import com.rich.projetcd.cards.Card;
-
 import junit.framework.TestCase;
 
 /**
@@ -23,8 +19,8 @@ public class KingdomTest extends TestCase {
 
         kd.addPlayer(player1);
         kd.addPlayer(player2);
-        player1.generateInitialDeck();
-        player2.generateInitialDeck();
+        player1.deck.generateInitialDeck(player1);
+        player2.deck.generateInitialDeck(player2);
 
         player1.setName("Player 1");
         player2.setName("Player 2");
@@ -61,7 +57,7 @@ public class KingdomTest extends TestCase {
         player2.generateInitialDeck();
         player1.generateHand();
 
-        assertEquals(player1.deck.cards.size(),5);
+        assertEquals(player1.deck.cards.size(), 5);
         assertEquals(player1.hand.size(), 5);
 
 

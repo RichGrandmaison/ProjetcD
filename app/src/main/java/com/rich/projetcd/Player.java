@@ -1,10 +1,9 @@
 package com.rich.projetcd;
 
-import com.rich.projetcd.cards.treasures.*;
-import com.rich.projetcd.cards.victories.*;
-
 /**
  * Created by Rich on 2015-11-13.
+ * Represents a Player
+ * Can call methods conresponding to actions a player may take, such as drawing cards, shuffling a new deck.
  */
 public class Player {
 
@@ -45,22 +44,7 @@ public class Player {
         this.points = points;
     }
 
-    public void generateInitialDeck() {
-
-        for (int i = 0; i < 7; i++) {
-            Copper copper = new Copper();
-            deck.addCardToTopOfDeck(copper);
-            ownedCards.addCardtoOwnedCards(copper);
-        }
-        for (int i = 0; i < 3; i++) {
-            Estate estate = new Estate();
-            deck.addCardToTopOfDeck(estate);
-            ownedCards.addCardtoOwnedCards(estate);
-        }
-
-        deck.shuffle();
-    }
-
+    public void generateInitialDeck() {deck.generateInitialDeck(this);}
 
     public void generateHand() {
         hand.generateHand(this);
