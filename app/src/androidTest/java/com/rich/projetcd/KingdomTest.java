@@ -29,6 +29,8 @@ public class KingdomTest extends TestCase {
         assertTrue(kd.getPlayerAtIndex(0).equals(player1));
         assertTrue(kd.getPlayerAtIndex(1).getName().equals("Player 2"));
         assertTrue(kd.getPlayerAtIndex(1).ownedCards.cards.size() == 10);
+        assertTrue(kd.getPlayerAtIndex(0).ownedCards.cards.size() == 10);
+
 
     }
 
