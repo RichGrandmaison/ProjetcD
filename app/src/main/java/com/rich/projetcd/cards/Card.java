@@ -2,6 +2,8 @@ package com.rich.projetcd.cards;
 
 import android.util.Log;
 
+import com.rich.projetcd.Turn;
+
 /**
  * Created by Rich on 2015-11-13.
  */
@@ -18,12 +20,11 @@ public abstract class Card {
     public Card() {
     }
 
-    public Card(String name, int cost, String text, Set set, Type type) {
+    public Card(String name, int cost, String text, Set set) {
         this.cardName = name;
         this.cardCost = cost;
         this.cardText = text;
         this.cardSet = set;
-        this.cardType = type;
         addedToKingdom();
     }
 
@@ -77,5 +78,15 @@ public abstract class Card {
         TREASURE, ACTION, VICTORY, CURSE, ACTION_ATTACK, ACTION_VICTORY, ACTION_REACTION, ACTION_DURATION, TREASURE_VICTORY, RUINS,
         TREASURE_REACTION
     }
+
+    public boolean isTreasure() {
+        if(this.getClass().getSuperclass().equals("Treasure")) {
+            return true;
+        }
+        return false;
+    }
+
+    public abstract void play(Turn t);
+
 
 }

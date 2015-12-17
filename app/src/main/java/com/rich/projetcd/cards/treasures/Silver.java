@@ -8,7 +8,7 @@ import com.rich.projetcd.Turn;
 public class Silver extends Treasure {
 
     public Silver() {
-        super(2, "Silver", 3, "", Set.ALL, Type.TREASURE);
+        super(2, "Silver", 3, "", Set.ALL);
     }
 
     @Override

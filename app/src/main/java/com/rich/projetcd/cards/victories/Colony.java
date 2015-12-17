@@ -1,15 +1,17 @@
 package com.rich.projetcd.cards.victories;
 
 import com.rich.projetcd.Player;
+import com.rich.projetcd.Turn;
 
 /**
  * Created by Rich on 2015-11-13.
  */
 public class Colony extends Victory {
 
-    public Colony(String name, int cost, String text, Set set, Type type) {
-        super("Colony", 11, "", Set.ALL, Type.VICTORY);
+    public Colony() {
+        super("Colony", 11, "", Set.ALL);
     }
+
     @Override
     public void resolvePoints(Player player) {
         player.setPoints(player.getPoints() + 10);
@@ -22,6 +24,9 @@ public class Colony extends Victory {
 
     @Override
     public void addedToKingdom() {
+    }
 
+    @Override
+    public void play(Turn t) {
     }
 }

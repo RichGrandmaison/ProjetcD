@@ -87,6 +87,11 @@ public class KingdomTest extends TestCase {
         assertEquals(player1.deck.cards.size(), 7);
         assertEquals(player1.discardPile.discards.size(), 0);
 
+        player1.playTreasure(player1.hand.getHandCards().get(1));
+        player1.playTreasure(player1.hand.getHandCards().get(0));
+        player1.playTreasure(player1.hand.getHandCards().get(2));
+
+
 
 
 

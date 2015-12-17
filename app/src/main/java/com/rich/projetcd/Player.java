@@ -3,6 +3,7 @@ package com.rich.projetcd;
 import android.util.Log;
 
 import com.rich.projetcd.cards.Card;
+import com.rich.projetcd.cards.treasures.Treasure;
 
 /**
  * Created by Rich on 2015-11-13.
@@ -20,6 +21,7 @@ public class Player {
     Played playedCards; //cards discarded this turn, but not yet in the Discard pile.
     Deck deck; //cards from which you draw
     Hand hand; //cards in your hand
+    Turn turn; //TODO
 
 
     public Player() {
@@ -55,6 +57,15 @@ public class Player {
 
     public void drawCards(int draws) {
         hand.drawCards(draws, this);
+    }
+
+    public void playTreasure(Card c) {
+        if (c.isTreasure()) {
+            c.play(this.turn);
+            Log.i(TAG, "+++++ played " + c.getCardName());
+        } else {
+            Log.i(TAG, "---Card is not a treasure!");
+        }
     }
 
     public void cleanUp() {

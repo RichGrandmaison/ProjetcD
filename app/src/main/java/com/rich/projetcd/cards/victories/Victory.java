@@ -8,8 +8,10 @@ import com.rich.projetcd.cards.Card;
  */
 public abstract class Victory extends Card {
 
-    public Victory(String name, int cost, String text, Set set, Type type) {
-        super(name, cost, text, set, type);
+    private Type type = Type.VICTORY;
+
+    public Victory(String name, int cost, String text, Set set) {
+        super(name, cost, text, set);
     }
 
     public abstract void resolvePoints(Player player);

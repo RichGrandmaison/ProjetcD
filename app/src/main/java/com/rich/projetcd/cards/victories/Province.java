@@ -1,6 +1,7 @@
 package com.rich.projetcd.cards.victories;
 
 import com.rich.projetcd.Player;
+import com.rich.projetcd.Turn;
 
 /**
  * Created by Rich on 2015-11-13.
@@ -8,7 +9,7 @@ import com.rich.projetcd.Player;
 public class Province extends Victory {
 
     public Province() {
-        super("Province", 8, "", Set.ALL, Type.VICTORY);
+        super("Province", 8, "", Set.ALL);
     }
     @Override
     public void resolvePoints(Player player) {
@@ -22,6 +23,11 @@ public class Province extends Victory {
 
     @Override
     public void addedToKingdom() {
+
+    }
+
+    @Override
+    public void play(Turn t) {
 
     }
 }

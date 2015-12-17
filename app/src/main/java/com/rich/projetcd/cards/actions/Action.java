@@ -8,8 +8,10 @@ import com.rich.projetcd.cards.Card;
  */
 public abstract class Action extends Card {
 
-    public Action(String name, int cost, String text, Set set, Type type) {
-        super(name, cost, text,set, type);
+    private Type type = Type.ACTION;
+
+    public Action(String name, int cost, String text, Set set) {
+        super(name, cost, text,set);
     }
 
     public abstract void playAction(Turn turn);
