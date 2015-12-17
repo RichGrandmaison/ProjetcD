@@ -29,7 +29,6 @@ public class Deck {
 
     public void addCardToTopOfDeck(Card c) {
         cards.add(c);
-        //Log.i(TAG, "added " + c.getCardName() + " to top of deck.");
     }
 
     public Card drawTopCard() {

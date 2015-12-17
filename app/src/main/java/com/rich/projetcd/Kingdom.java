@@ -1,7 +1,8 @@
 package com.rich.projetcd;
 
+import android.util.Log;
+
 import com.rich.projetcd.cards.Card;
-import com.rich.projetcd.cards.actions.*;
 import com.rich.projetcd.cards.victories.*;
 import com.rich.projetcd.cards.treasures.*;
 
@@ -12,6 +13,8 @@ import java.util.LinkedHashMap;
  * Created by Rich on 2015-11-13.
  */
 public class Kingdom {
+
+    private static final String TAG = "KINGDOM";
 
     private LinkedHashMap<String, Pile> piles;
     private GameManager gm;
@@ -64,7 +67,9 @@ public class Kingdom {
         addPile(new Pile( new Duchy(), sizeOfVictoryPiles));
         addPile(new Pile( new Province(), sizeOfVictoryPiles));
 
-        for(Pile pile : piles.values()) pile.addedToKingtom();
+        for(Pile pile : piles.values()) {
+            pile.addedToKingdom();
+        }
 
     }
 

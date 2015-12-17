@@ -1,5 +1,7 @@
 package com.rich.projetcd.cards.victories;
 
+import android.util.Log;
+
 import com.rich.projetcd.Player;
 import com.rich.projetcd.Turn;
 
@@ -14,11 +16,15 @@ public class Estate extends Victory {
     @Override
     public void resolvePoints(Player player) {
         player.setPoints(player.getPoints() + 1);
-
     }
 
     @Override
     public void addedToDeck() {
+    }
+
+    @Override
+    public void addedToKingdom() {
+        Log.i(" +++ new kingdom card", this.getCardName());
     }
 
     @Override

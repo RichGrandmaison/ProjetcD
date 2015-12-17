@@ -50,8 +50,7 @@ public class Pile<T> {
         return pileCard.getCardName();
     }
 
-    public void addedToKingtom() {
+    public void addedToKingdom() {
         this.pileCard.addedToKingdom();
-
     }
 }

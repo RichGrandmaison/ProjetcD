@@ -1,5 +1,7 @@
 package com.rich.projetcd.cards.victories;
 
+import android.util.Log;
+
 import com.rich.projetcd.Player;
 import com.rich.projetcd.Turn;
 
@@ -24,6 +26,7 @@ public class Duchy extends Victory {
 
     @Override
     public void addedToKingdom() {
+        Log.i(" +++ new kingdom card", this.getCardName());
     }
 
     @Override

@@ -7,7 +7,13 @@ import junit.framework.TestCase;
  */
 public class GameManagerTest extends TestCase {
 
-    public void testThisCrap() {
-        assertEquals(1+1, 2);
+   public void testGeneratingGameComponents() {
+       GameManager gm = new GameManager();
+       gm.generateKingdom();
+       gm.generatePlayers(3);
+
+       assertEquals(gm.getKingdom().getPiles().size(), 6);
+       assertEquals(gm.getKingdom().getPiles().get("Copper").getPileSize(), 60);
+
     }
 }

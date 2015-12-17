@@ -11,7 +11,7 @@ import com.rich.projetcd.cards.treasures.Treasure;
  */
 public abstract class Card {
 
-    private static final String TAG = "MYTEST";
+    private static final String TAG = "CARD";
 
     private String cardName;
     private String cardText;
@@ -28,7 +28,6 @@ public abstract class Card {
         this.cardText = text;
         this.cardSet = set;
         this.cardType = cardType;
-        addedToKingdom();
     }
 
     public String getCardName() {
@@ -69,12 +68,10 @@ public abstract class Card {
 
 
     public void addedToDeck() {
-        System.out.println(cardName + " added to ownedCards.");
         Log.i(TAG, cardName + " added to ownedCards.");
     }
     public void addedToKingdom() {
-        System.out.println(cardName + " added to kingdom.");
-        Log.i(TAG, cardName + " added to kingdom.");
+        Log.i(TAG, cardName + " why is this only called for estates!~.");
     }
 
     public enum Set {
