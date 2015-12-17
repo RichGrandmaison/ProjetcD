@@ -1,5 +1,7 @@
 package com.rich.projetcd;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 
 /**
@@ -7,6 +9,10 @@ import java.util.ArrayList;
  */
 public class GameManager {
 
+    private static final String TAG = "   *** game manager: ";
+
+    private int turnCounter = 0;
+    private int nextPlayer = 0;
     private Kingdom kingdom;
     private ArrayList<Player> players = new ArrayList<>();
 
@@ -32,5 +38,38 @@ public class GameManager {
 
     public int getPlayerCount() {
         return this.players.size();
+    }
+
+    public void startGame() {
+
+        generatePlayers(3);
+        generateKingdom();
+
+        while(gameNotFinished()) { //TODO win condition
+
+            Turn turn = new Turn(players.get(nextPlayer++ % players.size()));
+            turnCounter++;
+            turn.playTurn();
+        }
+    }
+
+    public void generatePlayers(int numberOfPlayers) { //TODO switch to after test
+        for (int i = 0; i < numberOfPlayers; i++) {
+            Player newPlayer = new Player();
+            newPlayer.setName("Player " + (1 + i));
+            addPlayer(newPlayer);
+            newPlayer.generateInitialDeck(); //should be later, after kindgom is generated to decide for Hovel and shit
+            Log.i(TAG, "added " + newPlayer.getName() + " to the game.");
+        }
+    }
+
+    public void generateKingdom() { //TODO switch to after test
+        Kingdom kd = new Kingdom(this);
+        kd.generateFixedSetup();
+        Log.i(TAG, " generate a kingdom.");
+    }
+
+    private boolean gameNotFinished() {
+        return !this.kingdom.checkIfGameIsOver();
     }
 }

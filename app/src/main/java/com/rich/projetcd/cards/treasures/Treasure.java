@@ -8,11 +8,12 @@ import com.rich.projetcd.cards.Card;
  */
 public abstract class Treasure extends Card {
 
+    private static Type type = Type.TREASURE;
     public int value;
-    private Type type = Type.TREASURE;
+
 
     public Treasure(int value,String name, int cost, String text, Set set) {
-        super(name, cost, text, set);
+        super(name, cost, text, set, type);
         this.value = value;
     }
 

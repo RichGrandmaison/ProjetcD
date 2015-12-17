@@ -72,5 +72,22 @@ public class Kingdom {
 
     }
 
+    public boolean checkIfGameIsOver(){
+        if(piles.get("Province").getPileSize() == 0) {
+            return true;
+        }
+
+        int emptyPiles = 0;
+        for(Pile p : piles.values()) {
+            if(p.getPileSize() == 0) {
+                emptyPiles++;
+                if(emptyPiles == 3) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
 
 }

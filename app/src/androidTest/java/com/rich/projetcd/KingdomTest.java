@@ -10,8 +10,8 @@ public class KingdomTest extends TestCase {
 
     public GameManager gameManager = new GameManager();
     public Kingdom kd = new Kingdom(gameManager);
-    Player player1 = new Player();
-    Player player2  = new Player();
+    public Player player1 = new Player();
+    public Player player2  = new Player();
 
     public void testAddingPlayers() {
 
@@ -61,6 +61,9 @@ public class KingdomTest extends TestCase {
         player1.generateInitialDeck();
         player2.generateInitialDeck();
         player1.generateHand();
+        Turn testTurn = new Turn(player1);
+        player1.setTurn(testTurn);
+
 
         assertEquals(player1.deck.cards.size(), 5);
         assertEquals(player1.hand.size(), 5);
@@ -90,13 +93,6 @@ public class KingdomTest extends TestCase {
         player1.playTreasure(player1.hand.getHandCards().get(1));
         player1.playTreasure(player1.hand.getHandCards().get(0));
         player1.playTreasure(player1.hand.getHandCards().get(2));
-
-
-
-
-
-
-
 
     }
 

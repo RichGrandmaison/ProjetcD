@@ -3,6 +3,8 @@ package com.rich.projetcd.cards;
 import android.util.Log;
 
 import com.rich.projetcd.Turn;
+import com.rich.projetcd.cards.treasure_victory.TreasureVictory;
+import com.rich.projetcd.cards.treasures.Treasure;
 
 /**
  * Created by Rich on 2015-11-13.
@@ -20,11 +22,12 @@ public abstract class Card {
     public Card() {
     }
 
-    public Card(String name, int cost, String text, Set set) {
+    public Card(String name, int cost, String text, Set set, Type cardType) {
         this.cardName = name;
         this.cardCost = cost;
         this.cardText = text;
         this.cardSet = set;
+        this.cardType = cardType;
         addedToKingdom();
     }
 
@@ -42,6 +45,10 @@ public abstract class Card {
 
     public Set getCardSet() {
         return cardSet;
+    }
+
+    public Type getCardType() {
+        return cardType;
     }
 
     public void setCardName(String cardName) {
@@ -80,10 +87,7 @@ public abstract class Card {
     }
 
     public boolean isTreasure() {
-        if(this.getClass().getSuperclass().equals("Treasure")) {
-            return true;
-        }
-        return false;
+        return ((this instanceof Treasure) || (this instanceof TreasureVictory));
     }
 
     public abstract void play(Turn t);

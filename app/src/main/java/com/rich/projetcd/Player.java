@@ -55,6 +55,15 @@ public class Player {
     public void generateHand() { hand.generateHand(this);
     }
 
+    public void setTurn(Turn t) {
+        this.turn = t;
+    }
+
+    public Turn getTurn() {
+        return this.turn;
+    }
+
+
     public void drawCards(int draws) {
         hand.drawCards(draws, this);
     }
@@ -73,4 +82,7 @@ public class Player {
         Log.i(TAG, "Clean up phase");
     }
 
+    public void chooseAction() {
+
+    }
 }
