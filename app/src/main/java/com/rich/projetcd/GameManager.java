@@ -51,6 +51,7 @@ public class GameManager {
             turnCounter++;
             turn.playTurn();
         }
+
     }
 
     public void generatePlayers(int numberOfPlayers) { //TODO switch to after test

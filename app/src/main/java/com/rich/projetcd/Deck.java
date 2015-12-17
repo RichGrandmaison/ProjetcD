@@ -31,6 +31,11 @@ public class Deck {
         cards.add(c);
     }
 
+    public Card lookAtTopOfDeck() {
+        Log.i(TAG, "top card of the deck is " + cards.get(cards.size() - 1).getCardName());
+        return cards.get(cards.size() - 1);
+    }
+
     public Card drawTopCard() {
         Card top = cards.get(cards.size() - 1);
         cards.remove(top);

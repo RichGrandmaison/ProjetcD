@@ -14,6 +14,8 @@ public abstract class Action extends Card {
         super(name, cost, text,set, type);
     }
 
-    public abstract void playAction(Turn turn);
+    public void playAction(Turn turn) {
+        super.
+    }
 
 }

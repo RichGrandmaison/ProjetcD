@@ -32,10 +32,7 @@ public class KingdomTest extends TestCase {
         assertTrue(gameManager.getPlayerAtIndex(1).getName().equals("Player 2"));
         assertTrue(gameManager.getPlayerAtIndex(1).ownedCards.cards.size() == 10);
         assertTrue(gameManager.getPlayerAtIndex(0).ownedCards.cards.size() == 10);
-
-
     }
-
 
     public void testAddingFixedKingdomCards() {
 
@@ -51,7 +48,6 @@ public class KingdomTest extends TestCase {
         assertTrue(kd.getPiles().get("Copper").getPileSize() == 60);
         assertTrue(kd.getPiles().get("Estate").getPileSize() == sizeOfVictoryPiles);
         assertTrue(kd.getPiles().get("Estate").getPileSize() == 8);
-
     }
 
     public void testDeckManipulations() {
@@ -63,7 +59,6 @@ public class KingdomTest extends TestCase {
         player1.generateHand();
         Turn testTurn = new Turn(player1);
         player1.setTurn(testTurn);
-
 
         assertEquals(player1.deck.cards.size(), 5);
         assertEquals(player1.hand.size(), 5);
@@ -93,7 +88,6 @@ public class KingdomTest extends TestCase {
         player1.playTreasure(player1.hand.getHandCards().get(1));
         player1.playTreasure(player1.hand.getHandCards().get(0));
         player1.playTreasure(player1.hand.getHandCards().get(2));
-
     }
 
 }

@@ -3,7 +3,11 @@ package com.rich.projetcd;
 import android.util.Log;
 
 import com.rich.projetcd.cards.Card;
+import com.rich.projetcd.cards.actions.Action;
 import com.rich.projetcd.cards.treasures.Treasure;
+
+import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * Created by Rich on 2015-11-13.
@@ -84,5 +88,17 @@ public class Player {
 
     public void chooseAction() {
 
+        int actionCounter = 0;
+        ArrayList<Card> actions = new ArrayList<>();
+        System.out.println("Select an action card to play:");
+
+        for(Card c : hand.getHandCards()) {
+            if(c instanceof Action) {
+                actionCounter++;
+                actions.add(c);
+                System.out.println(actionCounter + " : " + c.getCardName());
+            }
+        }
+        actions.get(actionCounter - 1).play(this.turn);
     }
 }

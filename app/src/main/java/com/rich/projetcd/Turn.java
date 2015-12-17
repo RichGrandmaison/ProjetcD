@@ -10,7 +10,9 @@ import com.rich.projetcd.cards.treasures.Treasure;
  */
 public class Turn {
 
-    Player player;
+    private static final String TAG = "TURN";
+
+    public Player player;
     public int actions = 1;
     public int buys = 1;
     public int cash = 0;
@@ -37,23 +39,26 @@ public class Turn {
 
 
     public void playTurn() {
-
+        Log.i(TAG, "starting a turn");
         playActions();
         playTreasures();
         buyPhase();
     }
 
     private void buyPhase() {
-        Log.i("BUY PHASE", "");
+        Log.i(TAG, "buy phase");
     }
 
     private void playActions() {
-        while(actions > 0) {
+        Log.i(TAG, "action phase");
+        while(actions > 0 && player.hand.hasActionCard()) {
             player.chooseAction();
+            decrementActions(1);
         }
     }
 
     private void playTreasures() {
+        Log.i(TAG, "treasure phase");
         for(Card c : player.hand.getHandCards()) {
             c.play(this);
         }

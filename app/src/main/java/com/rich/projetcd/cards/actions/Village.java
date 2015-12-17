@@ -13,6 +13,7 @@ public class Village extends Action {
     @Override
     public void playAction(Turn turn) {
 
+        turn.player.drawCards(1);
         turn.incrementActions(2);
 
     }

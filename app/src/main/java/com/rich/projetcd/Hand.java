@@ -3,6 +3,7 @@ package com.rich.projetcd;
 import android.util.Log;
 
 import com.rich.projetcd.cards.Card;
+import com.rich.projetcd.cards.actions.Action;
 
 import java.util.ArrayList;
 
@@ -60,5 +61,14 @@ public class Hand {
                 addToHand(player.deck.drawTopCard());
             }
         }
+    }
+
+    public boolean hasActionCard() {
+        for(Card c : getHandCards()) {
+            if(c instanceof Action) {
+                return true;
+            }
+        }
+        return false;
     }
 }
