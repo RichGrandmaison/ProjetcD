@@ -29,8 +29,19 @@ public class Hand {
         Log.i(TAG, "added " + c.getCardName() + " to hand.");
     }
 
+    public ArrayList<Card> getHandCards() {
+        return cards;
+    }
+
     public void removeFromHand(Card c) {
         cards.remove(c);
+    }
+
+    public void cleanUp(Player p) {
+        for(Card c : cards) {
+            p.discardPile.addToDiscardPile(c);
+        }
+        cards.clear();
     }
 
     public void generateHand(Player player) {

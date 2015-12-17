@@ -7,7 +7,9 @@ import junit.framework.TestCase;
  */
 public class KingdomTest extends TestCase {
 
-    public Kingdom kd = new Kingdom();
+
+    public GameManager gameManager = new GameManager();
+    public Kingdom kd = new Kingdom(gameManager);
     Player player1 = new Player();
     Player player2  = new Player();
 
@@ -17,19 +19,19 @@ public class KingdomTest extends TestCase {
 
         final String TAG = "TestAddingPlayers";
 
-        kd.addPlayer(player1);
-        kd.addPlayer(player2);
+        gameManager.addPlayer(player1);
+        gameManager.addPlayer(player2);
         player1.deck.generateInitialDeck(player1);
         player2.deck.generateInitialDeck(player2);
 
         player1.setName("Player 1");
         player2.setName("Player 2");
 
-        assertTrue(kd.getPlayers().size() == 2);
-        assertTrue(kd.getPlayerAtIndex(0).equals(player1));
-        assertTrue(kd.getPlayerAtIndex(1).getName().equals("Player 2"));
-        assertTrue(kd.getPlayerAtIndex(1).ownedCards.cards.size() == 10);
-        assertTrue(kd.getPlayerAtIndex(0).ownedCards.cards.size() == 10);
+        assertTrue(gameManager.getPlayerCount() == 2);
+        assertTrue(gameManager.getPlayerAtIndex(0).equals(player1));
+        assertTrue(gameManager.getPlayerAtIndex(1).getName().equals("Player 2"));
+        assertTrue(gameManager.getPlayerAtIndex(1).ownedCards.cards.size() == 10);
+        assertTrue(gameManager.getPlayerAtIndex(0).ownedCards.cards.size() == 10);
 
 
     }
@@ -39,15 +41,16 @@ public class KingdomTest extends TestCase {
 
         final String TAG = "TestAddingFixedKingdomCards";
 
-        kd.addPlayer(player1);
-        kd.addPlayer(player2);
+        gameManager.addPlayer(player1);
+        gameManager.addPlayer(player2);
 
-        int sizeOfVictoryPiles = (kd.getPlayers().size() > 2) ? 12 : 8;
+        int sizeOfVictoryPiles = (gameManager.getPlayerCount() > 2) ? 12 : 8;
 
         kd.generateFixedSetup();
         assertTrue(kd.getPiles().size() == 6);
         assertTrue(kd.getPiles().get("Copper").getPileSize() == 60);
         assertTrue(kd.getPiles().get("Estate").getPileSize() == sizeOfVictoryPiles);
+        assertTrue(kd.getPiles().get("Estate").getPileSize() == 8);
 
     }
 
@@ -61,6 +64,33 @@ public class KingdomTest extends TestCase {
 
         assertEquals(player1.deck.cards.size(), 5);
         assertEquals(player1.hand.size(), 5);
+
+        player1.drawCards(2);
+        assertEquals(player1.hand.size(), 7);
+        assertEquals(player1.deck.cards.size(), 3);
+        player1.drawCards(2);
+        assertEquals(player1.hand.size(), 9);
+        assertEquals(player1.deck.cards.size(), 1);
+
+        player1.cleanUp();
+        assertEquals(player1.hand.size(), 0);
+        assertEquals(player1.deck.cards.size(), 1);
+        assertEquals(player1.discardPile.discards.size(), 9);
+
+        player1.drawCards(1);
+        assertEquals(player1.hand.size(), 1);
+        assertEquals(player1.deck.cards.size(), 0);
+        assertEquals(player1.discardPile.discards.size(), 9);
+
+        player1.drawCards(2);
+        assertEquals(player1.hand.size(), 3);
+        assertEquals(player1.deck.cards.size(), 7);
+        assertEquals(player1.discardPile.discards.size(), 0);
+
+
+
+
+
 
 
     }

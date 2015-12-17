@@ -1,5 +1,9 @@
 package com.rich.projetcd;
 
+import android.util.Log;
+
+import com.rich.projetcd.cards.Card;
+
 /**
  * Created by Rich on 2015-11-13.
  * Represents a Player
@@ -46,12 +50,16 @@ public class Player {
 
     public void generateInitialDeck() {deck.generateInitialDeck(this);}
 
-    public void generateHand() {
-        hand.generateHand(this);
+    public void generateHand() { hand.generateHand(this);
     }
 
     public void drawCards(int draws) {
         hand.drawCards(draws, this);
+    }
+
+    public void cleanUp() {
+        this.hand.cleanUp(this);
+        Log.i(TAG, "Clean up phase");
     }
 
 }

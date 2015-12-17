@@ -13,20 +13,25 @@ import java.util.LinkedHashMap;
  */
 public class Kingdom {
 
-    private ArrayList<Player> players;
     private LinkedHashMap<String, Pile> piles;
+    private GameManager gm;
     private ArrayList<Card> trash;
+    private int playerCount = 0;
 
 
-    public Kingdom() {
-
-        players = new ArrayList<>();
+    public Kingdom(GameManager gm) {
+        this.gm = gm;
         piles = new LinkedHashMap<>();
         trash = new ArrayList<>();
+        gm.addKingdom(this);
     }
 
-    public void addPlayer(Player addedPlayer) {
-        this.players.add(addedPlayer);
+    public void setPlayerCount(int playerCount) {
+        this.playerCount = playerCount;
+    }
+
+    public int getPlayerCount() {
+        return playerCount;
     }
 
     public void addPile(Pile addedPile) {
@@ -47,21 +52,13 @@ public class Kingdom {
         return piles;
     }
 
-    public ArrayList<Player> getPlayers() {
-        return players;
-    }
-
-    public Player getPlayerAtIndex(int i) {
-        return players.get(i);
-    }
-
     public void generateFixedSetup() {
 
         addPile(new Pile( new Copper(), 60));
         addPile(new Pile( new Silver(), 40));
         addPile(new Pile( new Gold(), 30));
 
-        int sizeOfVictoryPiles = (players.size() > 2) ? 12 : 8;
+        int sizeOfVictoryPiles = (gm.getPlayerCount() > 2) ? 12 : 8;
 
         addPile(new Pile( new Estate(), sizeOfVictoryPiles));
         addPile(new Pile( new Duchy(), sizeOfVictoryPiles));
