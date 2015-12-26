@@ -6,29 +6,20 @@ import com.rich.projetcd.cards.Card;
 import com.rich.projetcd.cards.treasures.Copper;
 import com.rich.projetcd.cards.victories.Estate;
 
-import java.util.ArrayList;
-import java.util.Collections;
-
 /**
  * Created by Rich on 2015-11-13.
  *
  */
-public class Deck {
+public class Deck extends PlayerPile {
 
     private static final String TAG = "++DECK:";
 
-    public ArrayList<Card> cards;
-
-    public Deck() {
-        this.cards = new ArrayList<>();
-    }
-
-    public boolean isEmpty() {
-        return this.cards.isEmpty();
+    public Deck(Player player) {
+        super(player);
     }
 
     public void addCardToTopOfDeck(Card c) {
-        cards.add(c);
+        this.addToPile(c);
     }
 
     public Card lookAtTopOfDeck() {
@@ -37,15 +28,15 @@ public class Deck {
     }
 
     public Card drawTopCard() {
-        Card top = cards.get(cards.size() - 1);
-        cards.remove(top);
-        Log.i(TAG, "drew " + top.getCardName() + " from top of deck.");
-        return top;
-    }
-
-    public void shuffle() {
-        Collections.shuffle(this.cards);
-    }
+        if (isEmpty()) {
+            player.discardPile.sendPileToDeck();
+            player.playedCards.sendPileToDeck();
+        }
+            Card top = cards.get(cards.size() - 1);
+            removeFromPile(top);
+            Log.i(TAG, "drew " + top.getCardName() + " from top of deck.");
+            return top;
+        }
 
     public void generateInitialDeck(Player player) {
 
@@ -59,7 +50,6 @@ public class Deck {
             addCardToTopOfDeck(estate);
             player.ownedCards.addCardtoOwnedCards(estate);
         }
-
         shuffle();
     }
 }

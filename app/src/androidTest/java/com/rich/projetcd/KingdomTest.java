@@ -60,34 +60,34 @@ public class KingdomTest extends TestCase {
         Turn testTurn = new Turn(player1);
         player1.setTurn(testTurn);
 
-        assertEquals(player1.deck.cards.size(), 5);
+        assertEquals(player1.deck.size(), 5);
         assertEquals(player1.hand.size(), 5);
 
         player1.drawCards(2);
         assertEquals(player1.hand.size(), 7);
-        assertEquals(player1.deck.cards.size(), 3);
+        assertEquals(player1.deck.size(), 3);
         player1.drawCards(2);
         assertEquals(player1.hand.size(), 9);
-        assertEquals(player1.deck.cards.size(), 1);
+        assertEquals(player1.deck.size(), 1);
 
-        player1.cleanUp();
+        testTurn.cleanUp();
         assertEquals(player1.hand.size(), 0);
-        assertEquals(player1.deck.cards.size(), 1);
-        assertEquals(player1.discardPile.discards.size(), 9);
+        assertEquals(player1.deck.size(), 1);
+        assertEquals(player1.discardPile.size(), 9);
 
         player1.drawCards(1);
         assertEquals(player1.hand.size(), 1);
-        assertEquals(player1.deck.cards.size(), 0);
-        assertEquals(player1.discardPile.discards.size(), 9);
+        assertEquals(player1.deck.size(), 0);
+        assertEquals(player1.discardPile.size(), 9);
 
         player1.drawCards(2);
         assertEquals(player1.hand.size(), 3);
-        assertEquals(player1.deck.cards.size(), 7);
-        assertEquals(player1.discardPile.discards.size(), 0);
+        assertEquals(player1.deck.size(), 7);
+        assertEquals(player1.discardPile.size(), 0);
 
-        player1.playTreasure(player1.hand.getHandCards().get(1));
-        player1.playTreasure(player1.hand.getHandCards().get(0));
-        player1.playTreasure(player1.hand.getHandCards().get(2));
+        player1.playTreasure(player1.hand.cards.get(1));
+        player1.playTreasure(player1.hand.cards.get(0));
+        player1.playTreasure(player1.hand.cards.get(2));
     }
 
 }

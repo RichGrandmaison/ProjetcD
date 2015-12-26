@@ -10,29 +10,18 @@ import java.util.Collections;
  * Represents all the cards in your control.
  *  OwnedCards = Deck + Hand + Played + Discard + Mats
  */
-public class OwnedCards {
+public class OwnedCards extends PlayerPile {
 
-    public ArrayList<Card> cards = new ArrayList<>();
-
-    public OwnedCards() {
+    public OwnedCards(Player p) {
+        super(p);
     }
 
-    public void addCardtoOwnedCards(Card card) {
-        cards.add(card);
-        card.addedToDeck();
+    public void addCardtoOwnedCards(Card c) {
+        addToPile(c);
     }
 
-    public void removeCardFromOwnedCards(Card card) {
-        cards.remove(card);
+    public void removeCardFromOwnedCards(Card c) {
+        removeFromPile(c);
     }
-
-    public void shuffle() {
-
-        Collections.shuffle(this.cards);
-
-    }
-
-
-
 
 }

@@ -26,11 +26,10 @@ public class GameManagerTest extends TestCase {
         gm.generatePlayers(1);
         gm.generateKingdom();
         Turn testTurn = new Turn(gm.getPlayerAtIndex(0));
-        Village village = new Village();
         Player testPlayer = gm.getPlayerAtIndex(0);
         testPlayer.setTurn(testTurn);
 
-        testPlayer.deck.addCardToTopOfDeck(village);
+        testPlayer.deck.addCardToTopOfDeck(new Village());
         testPlayer.deck.lookAtTopOfDeck();
         testPlayer.generateHand();
         testPlayer.deck.lookAtTopOfDeck();
@@ -39,6 +38,7 @@ public class GameManagerTest extends TestCase {
         assertEquals(testPlayer.hand.size(), 5);
 
         testTurn.playTurn();
+
 
 
     }

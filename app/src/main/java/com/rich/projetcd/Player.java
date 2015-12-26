@@ -21,20 +21,20 @@ public class Player {
     private String name;
     private int points = 0;
     public OwnedCards ownedCards; //all your cards
-    Discard discardPile; //cards in the discard pile
-    Played playedCards; //cards discarded this turn, but not yet in the Discard pile.
-    Deck deck; //cards from which you draw
-    Hand hand; //cards in your hand
-    Turn turn; //TODO
+    public Discard discardPile; //cards in the discard pile
+    public Played playedCards; //cards discarded this turn, but not yet in the Discard pile.
+    public Deck deck; //cards from which you draw
+    public Hand hand; //cards in your hand
+    public Turn turn; //TODO
 
 
     public Player() {
         
-        this.ownedCards = new OwnedCards();
-        this.discardPile = new Discard();
-        this.playedCards = new Played();
-        this.deck = new Deck();
-        this.hand = new Hand();
+        this.ownedCards = new OwnedCards(this);
+        this.discardPile = new Discard(this);
+        this.playedCards = new Played(this);
+        this.deck = new Deck(this);
+        this.hand = new Hand(this);
         
     }
 
@@ -56,7 +56,8 @@ public class Player {
 
     public void generateInitialDeck() {deck.generateInitialDeck(this);}
 
-    public void generateHand() { hand.generateHand(this);
+    public void generateHand() {
+        hand.generateHand();
     }
 
     public void setTurn(Turn t) {
@@ -69,7 +70,8 @@ public class Player {
 
 
     public void drawCards(int draws) {
-        hand.drawCards(draws, this);
+
+        hand.drawCards(draws);
     }
 
     public void playTreasure(Card c) {
@@ -81,18 +83,13 @@ public class Player {
         }
     }
 
-    public void cleanUp() {
-        this.hand.cleanUp(this);
-        Log.i(TAG, "Clean up phase");
-    }
-
     public void chooseAction() {
 
         int actionCounter = 0;
         ArrayList<Card> actions = new ArrayList<>();
         System.out.println("Select an action card to play:");
 
-        for(Card c : hand.getHandCards()) {
+        for(Card c : hand.cards) {
             if(c instanceof Action) {
                 actionCounter++;
                 actions.add(c);
@@ -100,5 +97,6 @@ public class Player {
             }
         }
         actions.get(actionCounter - 1).play(this.turn);
+
     }
 }

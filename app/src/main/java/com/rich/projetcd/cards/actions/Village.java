@@ -15,7 +15,8 @@ public class Village extends Action {
 
         turn.player.drawCards(1);
         turn.incrementActions(2);
-
+        turn.player.playedCards.addToPile(this);
+        turn.player.hand.removeFromPile(this);
     }
 
     @Override

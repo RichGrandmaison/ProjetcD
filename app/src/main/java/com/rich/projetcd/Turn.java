@@ -43,10 +43,7 @@ public class Turn {
         playActions();
         playTreasures();
         buyPhase();
-    }
-
-    private void buyPhase() {
-        Log.i(TAG, "buy phase");
+        cleanUp();
     }
 
     private void playActions() {
@@ -59,9 +56,19 @@ public class Turn {
 
     private void playTreasures() {
         Log.i(TAG, "treasure phase");
-        for(Card c : player.hand.getHandCards()) {
+        for(Card c : player.hand.cards) {
             c.play(this);
         }
+    }
+
+    private void buyPhase() {
+        Log.i(TAG, "buy phase");
+    }
+
+
+    public void cleanUp() {
+        player.playedCards.sendPileToDiscard();
+        player.hand.sendPileToDiscard();
     }
 
 

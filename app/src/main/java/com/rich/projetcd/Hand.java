@@ -10,48 +10,31 @@ import java.util.ArrayList;
 /**
  * Created by Rich on 2015-11-13.
  */
-public class Hand {
+public class Hand extends PlayerPile {
 
     private static final String TAG = "++HAND:";
 
-    private ArrayList<Card> cards;
-
-    public Hand() {
-
-        cards = new ArrayList<>();
+    public Hand(Player player) {
+        super(player);
     }
 
-    public int size() {
-        return cards.size();
-    }
 
     public void addToHand(Card c) {
-        cards.add(c);
+        addToPile(c);
         Log.i(TAG, "added " + c.getCardName() + " to hand.");
     }
 
-    public ArrayList<Card> getHandCards() {
-        return cards;
-    }
-
     public void removeFromHand(Card c) {
-        cards.remove(c);
+        removeFromPile(c);
     }
 
-    public void cleanUp(Player p) {
-        for(Card c : cards) {
-            p.discardPile.addToDiscardPile(c);
-        }
-        cards.clear();
-    }
-
-    public void generateHand(Player player) {
+    public void generateHand() {
         while(cards.size() < 5) {
                player.drawCards(1);
         }
     }
 
-    public void drawCards(int draws, Player player) {
+    public void drawCards(int draws) {
         for(int i = 0; i < draws; i++) {
             if(!player.deck.isEmpty()) {
                 addToHand(player.deck.drawTopCard());
@@ -64,7 +47,7 @@ public class Hand {
     }
 
     public boolean hasActionCard() {
-        for(Card c : getHandCards()) {
+        for(Card c : cards) {
             if(c instanceof Action) {
                 return true;
             }
