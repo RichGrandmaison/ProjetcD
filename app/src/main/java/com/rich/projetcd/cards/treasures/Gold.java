@@ -12,10 +12,6 @@ public class Gold extends Treasure {
     }
 
     @Override
-    public void addedToDeck() {
-    }
-
-    @Override
     public void addedToKingdom() {
     }
 

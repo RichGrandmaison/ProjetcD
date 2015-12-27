@@ -13,10 +13,6 @@ public class Copper extends Treasure {
     }
 
     @Override
-    public void addedToDeck() {
-    }
-
-    @Override
     public void addedToKingdom() {
     }
 

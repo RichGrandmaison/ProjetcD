@@ -3,7 +3,10 @@ package com.rich.projetcd;
 import android.util.Log;
 
 import com.rich.projetcd.cards.Card;
+import com.rich.projetcd.cards.actions.Action;
 import com.rich.projetcd.cards.treasures.Treasure;
+
+import java.util.ArrayList;
 
 /**
  * Created by Rich on 2015-11-13.
@@ -19,50 +22,66 @@ public class Turn {
 
     public Turn(Player player) {
         this.player = player;
+        player.turn = this;
     }
 
     public void incrementActions(int i) {
-        this.actions += 1;
+        this.actions += i;
     }
 
-    public void decrementActions(int i) {
-        this.actions -=1 ;
-    }
+    public void decrementActions(int i) { this.actions -=i ; }
 
     public void incrementBuys(int i) {
-        this.buys += 1;
+        this.buys += i;
     }
 
     public void decrementBuys(int i) {
-        this.buys -= 1;
+        this.buys -= i;
     }
 
 
     public void playTurn() {
-        Log.i(TAG, "starting a turn");
         playActions();
         playTreasures();
         buyPhase();
         cleanUp();
     }
 
-    private void playActions() {
-        Log.i(TAG, "action phase");
-        while(actions > 0 && player.hand.hasActionCard()) {
-            player.chooseAction();
-            decrementActions(1);
+    public void playActions() {
+
+        while(player.hand.hasActionCard()) {
+
+            ArrayList<Card> actionCards = new ArrayList<>();
+
+            for(Card c : player.hand.cards) {
+                if(c.isAction()) {
+                    actionCards.add(c);
+                }
+            }
+
+            int temp = 1;
+            for(Card c : actionCards) {
+                Log.i(TAG, "---->  " + temp++ + " : " + c.getCardName());
+            }
+
+            for(Card c : actionCards) {
+                Log.i(TAG, "---->  playing " + c.getCardName());
+                c.play(this);
+            }
         }
     }
 
-    private void playTreasures() {
-        Log.i(TAG, "treasure phase");
-        for(Card c : player.hand.cards) {
-            c.play(this);
+    public void playTreasures() {
+        while(!player.hand.isEmpty()) {
+            if (player.hand.cards.get(0).isTreasure()) {
+                player.hand.cards.get(0).play(this);
+            }
         }
     }
 
-    private void buyPhase() {
-        Log.i(TAG, "buy phase");
+    public void buyPhase() {
+
+        player.chooseBuys();
     }
 
 

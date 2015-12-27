@@ -12,10 +12,6 @@ public class Silver extends Treasure {
     }
 
     @Override
-    public void addedToDeck() {
-    }
-
-    @Override
     public void addedToKingdom() {
     }
 

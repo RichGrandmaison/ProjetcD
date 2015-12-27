@@ -4,6 +4,8 @@ import android.util.Log;
 
 import com.rich.projetcd.cards.Card;
 import com.rich.projetcd.cards.actions.Action;
+import com.rich.projetcd.cards.treasures.Copper;
+import com.rich.projetcd.cards.treasures.Silver;
 import com.rich.projetcd.cards.treasures.Treasure;
 
 import java.util.ArrayList;
@@ -18,8 +20,8 @@ public class Player {
 
     private static final String TAG = "Player Logs";
 
-    private String name;
-    private int points = 0;
+    public String name;
+    public int points = 0;
     public OwnedCards ownedCards; //all your cards
     public Discard discardPile; //cards in the discard pile
     public Played playedCards; //cards discarded this turn, but not yet in the Discard pile.
@@ -38,40 +40,31 @@ public class Player {
         
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public int getPoints() {
-        return points;
-    }
-
-    public void setPoints(int points) {
-        this.points = points;
-    }
-
     public void generateInitialDeck() {deck.generateInitialDeck(this);}
 
     public void generateHand() {
         hand.generateHand();
     }
 
-    public void setTurn(Turn t) {
-        this.turn = t;
-    }
-
-    public Turn getTurn() {
-        return this.turn;
-    }
-
-
     public void drawCards(int draws) {
-
         hand.drawCards(draws);
+    }
+
+    public void buyCard(Card c) {
+
+       c.addedToDeck(this);
+        this.turn.cash -= c.getCardCost();
+        this.turn.decrementBuys(1);
+
+    }
+
+    public void trashCard(Card c) {
+
+    }
+
+    public void playAction(Card c) {
+        Log.i(TAG, "+++++ played " + c.getCardName());
+        c.play(this.turn);
     }
 
     public void playTreasure(Card c) {
@@ -83,20 +76,13 @@ public class Player {
         }
     }
 
-    public void chooseAction() {
-
-        int actionCounter = 0;
-        ArrayList<Card> actions = new ArrayList<>();
-        System.out.println("Select an action card to play:");
-
-        for(Card c : hand.cards) {
-            if(c instanceof Action) {
-                actionCounter++;
-                actions.add(c);
-                System.out.println(actionCounter + " : " + c.getCardName());
-            }
+    public void chooseBuys() {
+        Log.i(TAG, "buy phase");
+        if(this.turn.cash > 2) {
+            turn.player.buyCard(new Silver());
         }
-        actions.get(actionCounter - 1).play(this.turn);
-
+        else turn.player.buyCard(new Copper());
     }
+
 }
+

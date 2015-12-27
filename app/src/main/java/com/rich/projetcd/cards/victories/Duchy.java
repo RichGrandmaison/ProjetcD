@@ -16,12 +16,8 @@ public class Duchy extends Victory {
 
     @Override
     public void resolvePoints(Player player) {
-        player.setPoints(player.getPoints() + 3);
+        player.points += 3;
 
-    }
-
-    @Override
-    public void addedToDeck() {
     }
 
     @Override

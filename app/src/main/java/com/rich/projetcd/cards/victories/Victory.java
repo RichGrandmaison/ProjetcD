@@ -14,5 +14,9 @@ public abstract class Victory extends Card {
         super(name, cost, text, set, type);
     }
 
+    public void addedToDeck(Player player) {
+        player.discardPile.addToPile(this);
+    }
+
     public abstract void resolvePoints(Player player);
 }

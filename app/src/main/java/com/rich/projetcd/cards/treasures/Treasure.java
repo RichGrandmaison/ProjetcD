@@ -1,5 +1,6 @@
 package com.rich.projetcd.cards.treasures;
 
+import com.rich.projetcd.Player;
 import com.rich.projetcd.Turn;
 import com.rich.projetcd.cards.Card;
 
@@ -17,10 +18,15 @@ public abstract class Treasure extends Card {
         this.value = value;
     }
 
+    public void addedToDeck(Player player) {
+        player.discardPile.addToPile(this);
+    }
+
     public abstract void playTreasure(Turn turn);
 
     public void play(Turn t) {
         playTreasure(t);
+        moveCardFromHandToPlayed(t);
     }
 
 }

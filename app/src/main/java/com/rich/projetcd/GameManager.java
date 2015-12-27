@@ -57,10 +57,10 @@ public class GameManager {
     public void generatePlayers(int numberOfPlayers) { //TODO switch to after test
         for (int i = 0; i < numberOfPlayers; i++) {
             Player newPlayer = new Player();
-            newPlayer.setName("Player " + (1 + i));
+            newPlayer.name = "Player " + (1 + i);
             addPlayer(newPlayer);
             newPlayer.generateInitialDeck(); //should be later, after kindgom is generated to decide for Hovel and shit
-            Log.i(TAG, "added " + newPlayer.getName() + " to the game.");
+            Log.i(TAG, "added " + newPlayer.name + " to the game.");
         }
     }
 

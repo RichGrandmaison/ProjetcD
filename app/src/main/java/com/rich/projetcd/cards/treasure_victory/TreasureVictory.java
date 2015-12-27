@@ -13,6 +13,10 @@ public abstract class TreasureVictory extends Card {
 
     public abstract void playTreasure(Turn turn);
 
+    public void addedToDeck(Player player) {
+        player.discardPile.addToPile(this);
+    }
+
     public abstract void resolvePoints(Player player);
 
     public void play(Turn t) {

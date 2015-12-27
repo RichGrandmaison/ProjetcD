@@ -27,7 +27,7 @@ public class GameManagerTest extends TestCase {
         gm.generateKingdom();
         Turn testTurn = new Turn(gm.getPlayerAtIndex(0));
         Player testPlayer = gm.getPlayerAtIndex(0);
-        testPlayer.setTurn(testTurn);
+        testPlayer.turn = testTurn;
 
         testPlayer.deck.addCardToTopOfDeck(new Village());
         testPlayer.deck.lookAtTopOfDeck();
@@ -37,9 +37,18 @@ public class GameManagerTest extends TestCase {
         assertEquals(testPlayer.deck.cards.size(), 6);
         assertEquals(testPlayer.hand.size(), 5);
 
-        testTurn.playTurn();
+       testTurn.playTurn();
 
+    }
 
+    public void testGameOver() {
+        GameManager gm = new GameManager();
+        gm.generatePlayers(2);
+        gm.generateKingdom();
+
+        assertEquals(gm.getKingdom().getPiles().size(), 6);
+        assertEquals(gm.getKingdom().getPiles().get("Copper").getPileSize(), 60);
+        assertEquals(gm.getKingdom().getPiles().get("Duchy").getPileSize(), 8);
 
     }
 

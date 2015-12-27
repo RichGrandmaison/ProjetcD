@@ -110,5 +110,12 @@ public class HandTest extends TestCase {
 
     }
 
+    public void testHasActionCard() {
+        player1.hand.addToPile(new Village());
+        assertTrue(player1.hand.hasActionCard());
+    }
+
+
+
 
 }

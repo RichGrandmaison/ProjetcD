@@ -16,12 +16,8 @@ public class Colony extends Victory {
 
     @Override
     public void resolvePoints(Player player) {
-        player.setPoints(player.getPoints() + 10);
+        player.points += 10;
 
-    }
-
-    @Override
-    public void addedToDeck() {
     }
 
     @Override

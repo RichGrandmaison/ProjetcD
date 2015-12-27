@@ -21,7 +21,6 @@ public class Hand extends PlayerPile {
 
     public void addToHand(Card c) {
         addToPile(c);
-        Log.i(TAG, "added " + c.getCardName() + " to hand.");
     }
 
     public void removeFromHand(Card c) {
@@ -37,7 +36,8 @@ public class Hand extends PlayerPile {
     public void drawCards(int draws) {
         for(int i = 0; i < draws; i++) {
             if(!player.deck.isEmpty()) {
-                addToHand(player.deck.drawTopCard());
+                Card c = player.deck.drawTopCard();
+                addToHand(c);
             }
             else {
                 player.deck.cards = player.discardPile.shuffleAndMakeDeck();

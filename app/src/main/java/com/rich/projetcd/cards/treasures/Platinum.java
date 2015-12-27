@@ -12,10 +12,6 @@ public class Platinum extends Treasure {
     }
 
     @Override
-    public void addedToDeck() {
-    }
-
-    @Override
     public void addedToKingdom() {
     }
 

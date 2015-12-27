@@ -15,11 +15,7 @@ public class Estate extends Victory {
     }
     @Override
     public void resolvePoints(Player player) {
-        player.setPoints(player.getPoints() + 1);
-    }
-
-    @Override
-    public void addedToDeck() {
+        player.points += 1;
     }
 
     @Override

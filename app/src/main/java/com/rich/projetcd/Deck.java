@@ -22,19 +22,17 @@ public class Deck extends PlayerPile {
         this.addToPile(c);
     }
 
-    public Card lookAtTopOfDeck() {
-        Log.i(TAG, "top card of the deck is " + cards.get(cards.size() - 1).getCardName());
+    public Card lookAtTopOfDeck() { //TODO trop vedge mais check pour out of bound
         return cards.get(cards.size() - 1);
     }
 
     public Card drawTopCard() {
-        if (isEmpty()) {
+        if (this.isEmpty()) {
             player.discardPile.sendPileToDeck();
             player.playedCards.sendPileToDeck();
         }
             Card top = cards.get(cards.size() - 1);
             removeFromPile(top);
-            Log.i(TAG, "drew " + top.getCardName() + " from top of deck.");
             return top;
         }
 
